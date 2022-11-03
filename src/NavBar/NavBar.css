@@ -1,0 +1,25 @@
+.header {
+  min-height: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgb(128, 128, 128);
+}
+
+.nav-btn {
+  background-color: #fff;
+  font-size: 1em;
+  font-weight: 400;
+  border: none;
+  transition: 0.4s;
+  width: 6em;
+  font-family: Roboto, sans-serif;
+}
+
+.nav-btn:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
