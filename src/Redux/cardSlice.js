@@ -10,11 +10,13 @@ export const cardSlice = createSlice({
   name: "card",
   initialState,
   reducers: {
-    updateAllCards: (state) => {
-      console.log("Updating All Cards Data");
+    updateAllCards: (state, action) => {
+      if (state.allCards.length < 86) {
+        state.allCards = [...state.allCards, ...action.payload];
+      }
     },
-    updateYourCards: (state) => {
-      console.log("Updating Your Cards Data");
+    updateYourCards: (state, action) => {
+      state.yourCards = [...state.yourCards, ...action.payload];
     },
     updateFilteredCards: (state, action) => {
       console.log("Updating Filtered Cards Data");
