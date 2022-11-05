@@ -1,0 +1,95 @@
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+  width: 75%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+}
+.card-wrapper:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.card-container {
+  margin: 20px;
+}
+.card-container div {
+  margin: 2px;
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-header-details {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  width: 75%;
+}
+.card-name {
+  font-size: 18px;
+  font-weight: 600;
+}
+.card-description {
+  justify-self: flex-start;
+  color: rgb(82, 82, 82);
+}
+.card-details {
+  display: flex;
+  justify-content: space-between;
+}
+.card-type {
+  padding: 3px;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgb(82, 82, 82);
+  border: 1.5px solid rgb(82, 82, 82);
+  border-radius: 3px;
+}
+.card-expiry {
+  color: rgb(82, 82, 82);
+}
+
+progress {
+  border-radius: 5px;
+  width: 100%;
+  height: 10px;
+}
+progress::-webkit-progress-bar {
+  background-color: darkgreen;
+  border-radius: 5px;
+}
+progress::-webkit-progress-value {
+  background-color: rgb(255, 0, 115);
+  border-radius: 5px;
+}
+.card-spent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.spent {
+  display: flex;
+  align-items: center;
+}
+.card-available {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.available {
+  display: flex;
+  align-items: center;
+}
+.amount-available {
+  font-weight: 500;
+}
+.card-logo {
+  border-radius: 50%;
+  padding: 5px;
+}
+.card-logo img {
+  background-color: rgb(255, 230, 232);
+  border-radius: 50%;
+}
