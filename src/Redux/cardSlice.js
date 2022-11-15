@@ -13,6 +13,13 @@ export const cardSlice = createSlice({
   reducers: {
     updateAllCards: (state, action) => {
       state.allCards = [...state.allCards, ...action.payload];
+      state.allCards = state.allCards.filter(
+        (value, index, self) =>
+          index ===
+          self.findIndex(
+            (t) => t.place === value.place && t.name === value.name
+          )
+      );
       state.filteredCards = state.allCards;
       state.searchedCards = state.allCards;
     },
