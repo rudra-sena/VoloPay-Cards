@@ -1,0 +1,161 @@
+.page-header {
+  display: flex;
+  justify-content: flex-end;
+  margin: auto 60px;
+}
+
+.filter-container div {
+  margin: 10px;
+}
+
+.page-header .search-container {
+  display: flex;
+}
+
+.page-header .search-container img {
+  height: 40px;
+  align-items: center;
+}
+
+.page-header .search-container input {
+  border: none;
+  height: 40px;
+  width: 90%;
+  font-size: 14px;
+}
+
+.page-header .btn-filter {
+  display: flex;
+  align-items: center;
+  width: 10%;
+  background-color: 1px solid #ccc;
+}
+
+.btn-filter button {
+  padding: 10px;
+  width: 100%;
+  font-size: 14px;
+  border: none;
+  color: rgb(100, 100, 100);
+  font-weight: 400;
+}
+
+.btn-filter button:hover {
+  cursor: pointer;
+}
+
+.filter-modal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: absolute;
+  z-index: 1;
+  right: 10%;
+  top: 25%;
+  background-color: white;
+  width: 30%;
+  padding: 10px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.hide {
+  display: none;
+}
+
+.select-container {
+  height: auto;
+  width: 100%;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.select-container .select {
+  border: none;
+  width: 80%;
+  padding: 10px 15px;
+  margin-bottom: 2px;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(232, 232, 232);
+  align-items: center;
+}
+.filter-label {
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+  align-items: center;
+}
+.type-label {
+  display: flex;
+  justify-content: flex-start;
+}
+.filter-type {
+  display: flex;
+  justify-content: space-around;
+}
+
+.select-label {
+  display: flex;
+  justify-content: flex-start;
+}
+.select-container .select-dropdown {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px 15px;
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  top: 45px;
+  width: 80%;
+}
+
+.select-container:hover {
+  cursor: pointer;
+}
+
+.select-container .select-dropdown div {
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+.select-container .select-dropdown div:hover {
+  background-color: rgb(232, 232, 232);
+  cursor: pointer;
+}
+
+.modal-button {
+  display: flex;
+  justify-content: space-around;
+}
+
+.modal-button div {
+  width: 75%;
+}
+.modal-button .apply {
+  width: 100%;
+  background-color: rgb(255, 0, 115);
+  border: none;
+  color: white;
+  border-radius: 3px;
+  padding: 10px 20px;
+}
+.modal-button .apply:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+.modal-button .clear {
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
+  border: none;
+  color: rgb(100, 100, 100);
+  border-radius: 3px;
+  padding: 10px 20px;
+}
+.modal-button .clear:hover {
+  cursor: pointer;
+  opacity: 1.1;
+}
