@@ -6,24 +6,18 @@ const NavBar = () => {
     <>
       <div className="header">
         <Link to="/your-cards">
-          <div>
-            <button className="nav-btn" onClick>
-              Your
-            </button>
+          <div className="btn-div">
+            <button className="nav-btn">Your</button>
           </div>
         </Link>
         <Link to="/">
-          <div>
-            <button className="nav-btn" onClick>
-              All
-            </button>
+          <div className="btn-div">
+            <button className="nav-btn">All</button>
           </div>
         </Link>
         <Link to="/blocked-cards">
-          <div>
-            <button className="nav-btn" onClick>
-              Blocked
-            </button>
+          <div className="btn-div">
+            <button className="nav-btn">Blocked</button>
           </div>
         </Link>
       </div>
