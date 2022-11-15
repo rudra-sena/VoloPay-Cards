@@ -54,7 +54,6 @@ const AllCards = () => {
   //Card Data from Redux
   const allCards = useSelector((state) => state.card.allCards);
   const filteredCards = useSelector((state) => state.card.filteredCards);
-  const removeDuplicateCards = [...new Set(filteredCards)];
   return (
     <div className="all-cards">
       <PageHeader />
@@ -62,7 +61,7 @@ const AllCards = () => {
       {error && <h2>{error}</h2>}
       {allCards && (
         <Cards
-          cards={removeDuplicateCards}
+          cards={filteredCards}
           loading={loading}
           hasMore={hasMore}
           setPage={setPage}
