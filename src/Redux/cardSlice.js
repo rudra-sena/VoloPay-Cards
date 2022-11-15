@@ -4,6 +4,7 @@ const initialState = {
   allCards: [],
   filteredCards: [],
   searchedCards: [],
+  filterApplied: false,
 };
 
 export const cardSlice = createSlice({
@@ -14,6 +15,12 @@ export const cardSlice = createSlice({
       state.allCards = [...state.allCards, ...action.payload];
       state.filteredCards = state.allCards;
       state.searchedCards = state.allCards;
+    },
+    updateFilteredCards: (state, action) => {
+      state.filteredCards = [...action.payload];
+    },
+    updateFilterApplied: (state, action) => {
+      state.filterApplied = action.payload;
     },
     search: (state, action) => {
       state.searchedCards = state.allCards.filter((card) => {
@@ -41,7 +48,12 @@ export const cardSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { updateAllCards, updateFilteredCards, filter, search } =
-  cardSlice.actions;
+export const {
+  updateAllCards,
+  updateFilteredCards,
+  updateFilterApplied,
+  filter,
+  search,
+} = cardSlice.actions;
 
 export default cardSlice.reducer;

@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { updateAllCards, updateFilterApplied } from "../../Redux/cardSlice";
+import { useSelector, useDispatch } from "react-redux";
 import PageHeader from "../../Components/PageHeader/PageHeader";
 import Cards from "../../Components/Cards";
-import { updateAllCards } from "../../Redux/cardSlice";
-import { useSelector, useDispatch } from "react-redux";
+import Loading from "../../Components/Loading/Loading";
 
 const AllCards = () => {
   //Pagination States
@@ -13,6 +14,7 @@ const AllCards = () => {
   const url = "cards.json";
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [hasMore, setHasMore] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -33,7 +35,9 @@ const AllCards = () => {
         signal: abortFetch.signal,
       })
       .then((res) => {
+        dispatch(updateFilterApplied(false));
         handlePagination(res.data);
+        setHasMore(allCards.length < res.data.length);
       })
       .catch((err) => {
         if (!(err.name === "CanceledError")) {
@@ -47,15 +51,23 @@ const AllCards = () => {
     return () => abortFetch.abort(); //Fetch aborted when component unmounts
   }, [page]);
 
+  //Card Data from Redux
   const allCards = useSelector((state) => state.card.allCards);
   const filteredCards = useSelector((state) => state.card.filteredCards);
-
+  const filterApplied = useSelector((state) => state.card.filterApplied);
   return (
     <div className="all-cards">
       <PageHeader />
-      {loading && <div className="loader">Loading...</div>}
+      {loading && <Loading />}
       {error && <h2>{error}</h2>}
-      {allCards && <Cards cards={filteredCards} />}
+      {allCards && (
+        <Cards
+          cards={filteredCards}
+          loading={loading}
+          hasMore={hasMore}
+          setPage={setPage}
+        />
+      )}
     </div>
   );
 };

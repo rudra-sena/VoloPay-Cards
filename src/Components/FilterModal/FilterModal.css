@@ -51,6 +51,10 @@
   display: flex;
   justify-content: space-around;
 }
+.filter-type div {
+  display: flex;
+  justify-content: space-around;
+}
 
 .select-label {
   display: flex;
@@ -65,7 +69,10 @@
   top: 45px;
   width: 80%;
 }
-
+.select-container img {
+  height: 20px;
+  align-items: center;
+}
 .select-container:hover {
   cursor: pointer;
 }

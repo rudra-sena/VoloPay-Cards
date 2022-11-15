@@ -1,5 +1,5 @@
 const BlockedCards = () => {
-  return <>Blocked Cards</>;
+  return <>Blocked Cards are displayed here</>;
 };
 
 export default BlockedCards;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { filter } from "../../Redux/cardSlice";
+import { filter, updateFilterApplied } from "../../Redux/cardSlice";
+import arrow from "./arrow.svg";
 import "./FilterModal.css";
 
 const FilterModal = ({ filterClicked, setFilterClicked }) => {
@@ -33,6 +34,7 @@ const FilterModal = ({ filterClicked, setFilterClicked }) => {
   };
 
   const handleFilterApply = () => {
+    dispatch(updateFilterApplied(true));
     dispatch(filter([checked, selected]));
     setFilterClicked(!filterClicked);
     setChecked([]);
@@ -42,6 +44,8 @@ const FilterModal = ({ filterClicked, setFilterClicked }) => {
   function removeDuplicates(arr) {
     return [...new Set(arr)];
   }
+
+  //Card Data from Redux
   const allCards = useSelector((state) => state.card.allCards);
   const allCardOwners = allCards.map((card) => card.owner);
   const cardOwners = removeDuplicates(allCardOwners);
@@ -56,7 +60,7 @@ const FilterModal = ({ filterClicked, setFilterClicked }) => {
             <div className="filter-type">
               {cardTypes.map((type) => {
                 return (
-                  <>
+                  <div key={type.type}>
                     <div>
                       <input
                         type="checkbox"
@@ -67,19 +71,25 @@ const FilterModal = ({ filterClicked, setFilterClicked }) => {
                       />
                     </div>
                     <div>
-                      <label for="burner">{type.typeValue}</label>
+                      <label htmlFor="burner">{type.typeValue}</label>
                     </div>
-                  </>
+                  </div>
                 );
               })}
             </div>
             <div className="select-label">Cardholder</div>
             <div className="select-container" onClick={toggleDropdown}>
-              <div className="select">{selected}</div>
+              <div className="select">
+                {selected}
+                <img src={arrow} />
+              </div>
+
               <div className={`select-dropdown ${hideDropdown && "hide"}`}>
                 {cardOwners.map((cardOwner) => {
                   return (
-                    <div onClick={(e) => onSelectHandler(e)}>{cardOwner}</div>
+                    <div key={cardOwner} onClick={(e) => onSelectHandler(e)}>
+                      {cardOwner}
+                    </div>
                   );
                 })}
               </div>

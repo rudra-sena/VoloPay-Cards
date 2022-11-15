@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { search } from "../../Redux/cardSlice";
+import { search, updateFilterApplied } from "../../Redux/cardSlice";
 import Search from "./search.svg";
+import filterSVG from "./filter.svg";
 import "./PageHeader.css";
 import FilterModal from "../FilterModal/FilterModal";
 
@@ -16,6 +17,7 @@ const PageHeader = () => {
   };
 
   useEffect(() => {
+    dispatch(updateFilterApplied(true));
     dispatch(search(searchInput));
   }, [searchInput]);
 
@@ -37,9 +39,12 @@ const PageHeader = () => {
           </div>
         </div>
         <div className="btn-filter">
-          <button onClick={() => setFilterClicked(!filterClicked)}>
-            Filter
-          </button>
+          <div>
+            <button onClick={() => setFilterClicked(!filterClicked)}>
+              <img src={filterSVG} />
+              Filter
+            </button>
+          </div>
         </div>
       </div>
       <FilterModal
