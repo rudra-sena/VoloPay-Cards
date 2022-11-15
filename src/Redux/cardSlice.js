@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   allCards: [],
-  yourCards: [],
   filteredCards: [],
+  searchedCards: [],
 };
 
 export const cardSlice = createSlice({
@@ -11,20 +11,37 @@ export const cardSlice = createSlice({
   initialState,
   reducers: {
     updateAllCards: (state, action) => {
-      if (state.allCards.length < 86) {
-        state.allCards = [...state.allCards, ...action.payload];
+      state.allCards = [...state.allCards, ...action.payload];
+      state.filteredCards = state.allCards;
+      state.searchedCards = state.allCards;
+    },
+    search: (state, action) => {
+      state.searchedCards = state.allCards.filter((card) => {
+        return card.name.toLowerCase().includes(action.payload);
+      });
+      state.filteredCards = state.searchedCards;
+    },
+    filter: (state, action) => {
+      state.filteredCards = state.searchedCards;
+      console.log(action.payload);
+      const checked = action.payload[0];
+      if (checked.length > 0) {
+        state.filteredCards = state.filteredCards.filter((card) => {
+          return checked.includes(card.card_type);
+        });
       }
-    },
-    updateYourCards: (state, action) => {
-      state.yourCards = [...state.yourCards, ...action.payload];
-    },
-    updateFilteredCards: (state, action) => {
-      console.log("Updating Filtered Cards Data");
+      const selected = action.payload[1];
+      if (selected !== "Select Cardholder") {
+        state.filteredCards = state.filteredCards.filter((card) => {
+          return card.owner === selected;
+        });
+      }
     },
   },
 });
 
-export const { updateAllCards, updateYourCards, updateFilteredCards } =
+// Action creators are generated for each case reducer function
+export const { updateAllCards, updateFilteredCards, filter, search } =
   cardSlice.actions;
 
 export default cardSlice.reducer;
